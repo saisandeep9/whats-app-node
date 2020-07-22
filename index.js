@@ -12,6 +12,8 @@ app.use(express.json());
 
 const drivers = require("./routes/drivers");
 const clients = require("./routes/endClients");
+const message = require("./routes/messages");
+const auth = require("./routes/auth");
 const test = require("./routes/test");
 
 mongoose
@@ -23,6 +25,9 @@ mongoose
 
 app.use("/api", drivers);
 app.use("/api", clients);
+app.use("/api", message);
+app.use("/api", auth);
+
 app.use("/api", test);
 
 const port = process.env.PORT || 3900;

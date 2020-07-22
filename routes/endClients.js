@@ -11,11 +11,15 @@ global.__basedir = __dirname;
 
 app.post(
   "/clients",
-  upload.single("img"),
+  upload.single("file"),
 
   async (req, res) => {
-    const img = req.file;
-    console.log("img ", img);
+    console.log(req.files);
+    const file = req.file;
+
+    console.log("img ", file);
+    console.log("my file", req.file.filename);
+    console.log("file", req.file.filename);
     console.log("file name", __basedir + "/uploads/" + req.file.filename);
 
     const data = ImportExceltoMDB(__basedir + "/uploads/" + req.file.filename);

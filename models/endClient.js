@@ -8,6 +8,10 @@ const clientSchema = new mongoose.Schema({
     type: Number,
     unique: true,
   },
+  date: {
+    type: Date,
+    default: new Date(),
+  },
 });
 
 const Client = mongoose.model("Client", clientSchema);
