@@ -9,6 +9,10 @@ const { Driver } = require("../models/driver");
 
 app.get("/drivers", async (req, res) => {
   const drivres = await Driver.find();
+  // const count = await Driver.find().count();
+
+  // // console.log(res.);
+  // res.writeHead({ count: count });
   res.send(drivres);
 });
 

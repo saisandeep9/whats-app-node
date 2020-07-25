@@ -18,4 +18,12 @@ app.get("/message", async (req, res) => {
   const message = await Message.find();
   res.send(message);
 });
+
+app.delete("/message/:id", async (req, res) => {
+  const message = await Message.findByIdAndRemove(req.params.id);
+  if (!message) return res.status(404).send("The message was not found.");
+
+  res.send(message);
+});
+
 module.exports = app;

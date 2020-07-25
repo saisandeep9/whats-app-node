@@ -11,7 +11,12 @@ const messageSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
+  messageImport: {
+    type: Number,
+    trim: true,
+    default: 0,
+  },
 });
 
-const Message = mongoose.model("Messages", messageSchema);
+const Message = mongoose.model("Message", messageSchema);
 module.exports.Message = Message;

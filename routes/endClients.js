@@ -27,10 +27,12 @@ app.post(
 
     console.log("samle data", data);
 
-    console.log(
-      data.map((d) => ((db = new Client(d)), console.log(db), db.save()))
-    );
+    data.map(async (d) => {
+      const db = new Client(d);
+      await db.save();
+    });
 
+    res.status(200).send({ message: "success" });
     // exlData.Sheet1.map((t) => ((p = new Client(t)), p.save()));
 
     // const client = new Client({
