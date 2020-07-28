@@ -8,6 +8,7 @@ function ImportExceltoMDB(filePath, req, res, next) {
   // -> Read Excel File to Json Data
 
   console.log("im fun", __basedir);
+  console.log("filepath", filePath);
 
   const exlData = excelToJson({
     sourceFile: filePath,
@@ -21,8 +22,7 @@ function ImportExceltoMDB(filePath, req, res, next) {
         },
         // Mapping columns to keys
         columnToKey: {
-          A: "code",
-          B: "mobileNumber",
+          A: "mobileNumber",
         },
       },
     ],

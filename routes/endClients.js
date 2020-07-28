@@ -11,24 +11,27 @@ global.__basedir = __dirname;
 
 app.post(
   "/clients",
-  upload.single("file"),
+  upload.single(`file`),
 
   async (req, res) => {
-    console.log(req.files);
-    const file = req.file;
+    console.log(req.body.file);
+    const file = req.body.file;
+    // const file = req.file.filename;
 
-    console.log("img ", file);
-    console.log("my file", req.file.filename);
-    console.log("file", req.file.filename);
+    console.log("img ", req.file.path);
+    // console.log("my file", req.file.filename);
+    // console.log("file", req.file.filename);
     console.log("file name", __basedir + "/uploads/" + req.file.filename);
 
-    const data = ImportExceltoMDB(__basedir + "/uploads/" + req.file.filename);
+    // const data = ImportExceltoMDB(__basedir + "/uploads/" + req.file.filename);
+    const data = ImportExceltoMDB(req.file.path);
     // console.log(__basedir);
 
-    console.log("samle data", data);
+    // console.log("samle data", data);
 
     data.map(async (d) => {
       const db = new Client(d);
+      // console.log({ mobileNumbre: `91${d.mobileNumber}` });
       await db.save();
     });
 

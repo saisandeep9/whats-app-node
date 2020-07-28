@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(helmet());
 require("express-async-errors");
 
-const drivers = require("./routes/drivers");
+const users = require("./routes/uers");
 const clients = require("./routes/endClients");
 const message = require("./routes/messages");
 const auth = require("./routes/auth");
@@ -29,7 +29,7 @@ mongoose
   )
   .catch((err) => console.log("faile to connect to db...", err));
 
-app.use("/api", drivers);
+app.use("/api", users);
 app.use("/api", clients);
 app.use("/api", message);
 app.use("/api", auth);

@@ -6,7 +6,7 @@ const { SentMessage } = require("../models/sentMessage");
 // const { Driver } = require("../models/driver");
 const { Message } = require("../models/message");
 const { Client } = require("../models/endClient");
-const { update } = require("lodash");
+// const { update } = require("lodash");
 
 app.get("/sendMessage", async (req, res) => {
   const sentmessage = await SentMessage.find()
@@ -59,5 +59,11 @@ app.delete("/sendMessage/:id", async (req, res) => {
 
   res.send(message);
 });
+
+// app.delete("/sendMessage/delete/:id", async (req, res) => {
+//   console.log(req.params.id);
+//   await SentMessage.deleteMany({ messageId: req.params.id });
+
+// });
 
 module.exports = app;

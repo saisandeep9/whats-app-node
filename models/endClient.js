@@ -1,12 +1,10 @@
 const mongoose = require("mongoose");
 
 const clientSchema = new mongoose.Schema({
-  code: {
-    type: String,
-  },
   mobileNumber: {
     type: Number,
     unique: true,
+    required: true,
   },
   date: {
     type: Date,
