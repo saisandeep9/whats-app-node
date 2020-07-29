@@ -1,5 +1,6 @@
 {
   "jwtPrivateKey": "jwtPrivateKey",
+  "db2": "https://test-5823c.firebaseio.com",
   "db": "mongodb://localhost/whats_app",
   "salt_to_password": 9
 }

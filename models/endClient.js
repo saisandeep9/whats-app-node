@@ -5,6 +5,8 @@ const clientSchema = new mongoose.Schema({
     type: Number,
     unique: true,
     required: true,
+    minlength: 10,
+    maxlength: 10,
   },
   date: {
     type: Date,

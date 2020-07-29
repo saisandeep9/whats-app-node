@@ -30,8 +30,10 @@ app.post(
     // console.log("samle data", data);
 
     data.map(async (d) => {
-      const db = new Client(d);
-      // console.log({ mobileNumbre: `91${d.mobileNumber}` });
+      console.log({ mobileNumbre: `91${d.mobileNumber}` });
+      console.log({ mobileNumbre: parseInt(`91${d.mobileNumber}`) });
+      const db = new Client({ mobileNumber: parseInt(`91${d.mobileNumber}`) });
+
       await db.save();
     });
 
