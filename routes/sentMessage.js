@@ -3,18 +3,22 @@ const app = express();
 
 const { SentMessage } = require("../models/sentMessage");
 
-// const { Driver } = require("../models/driver");
 const { Message } = require("../models/message");
 const { Client } = require("../models/endClient");
-// const { update } = require("lodash");
 
 app.get("/sendMessage", async (req, res) => {
   const sentmessage = await SentMessage.find()
     .populate(`messageId`, "message -_id")
     .populate(`endClientId`);
-  // .populate(`driverId`);
 
   res.send(sentmessage);
+});
+
+app.get("/messageCount", async (req, res) => {
+  const messageCount = await SentMessage.find().countDocuments();
+  console.log("message count ", messageCount);
+  // res.send(status);
+  res.send({ messageCount });
 });
 
 app.post("/sendMessage/:id", async (req, res, next) => {

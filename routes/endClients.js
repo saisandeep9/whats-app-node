@@ -30,53 +30,14 @@ app.post(
     // console.log("samle data", data);
 
     data.map(async (d) => {
-      console.log({ mobileNumbre: `91${d.mobileNumber}` });
-      console.log({ mobileNumbre: parseInt(`91${d.mobileNumber}`) });
       const db = new Client({ mobileNumber: parseInt(`91${d.mobileNumber}`) });
 
       await db.save();
     });
 
     res.status(200).send({ message: "success" });
-    // exlData.Sheet1.map((t) => ((p = new Client(t)), p.save()));
-
-    // const client = new Client({
-    //   code: req.body.code,
-    //   mobileNumber: req.body.mobileNumber,
-    // });
-
-    // await client.save();
-    // res.send(client);
   }
 );
-
-// function ImportExceltoMDB(filePath) {
-//   // -> Read Excel File to Json Data
-//   const exlData = excelToJson({
-//     sourceFile: filePath,
-//     sheets: [
-//       {
-//         // Excel Sheet Name
-//         name: "Sheet1",
-//         // Header Row -> be skipped and will not be present at our result object.
-//         header: {
-//           rows: 1,
-//         },
-//         // Mapping columns to keys
-//         columnToKey: {
-//           A: "code",
-//           B: "mobileNumber",
-//         },
-//       },
-//     ],
-//   });
-
-//   // console.log((s = exlData.Sheet1[0]));
-//   exlData.Sheet1.map((t) => ((p = new Client(t)), p.save()));
-
-//   // const client = new Client(s);
-//   // s.save();
-// }
 
 app.get("/clients", async (req, res) => {
   const client = await Client.find();
