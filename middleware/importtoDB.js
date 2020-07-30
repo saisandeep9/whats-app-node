@@ -17,9 +17,9 @@ function ImportExceltoMDB(filePath, req, res, next) {
         // Excel Sheet Name
         name: "Sheet1",
         // Header Row -> be skipped and will not be present at our result object.
-        header: {
-          rows: 1,
-        },
+        // header: {
+        //   rows: 1,
+        // },
         // Mapping columns to keys
         columnToKey: {
           A: "mobileNumber",
