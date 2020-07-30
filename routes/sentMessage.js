@@ -17,7 +17,7 @@ app.get("/sendMessage", async (req, res) => {
 
 app.get("/sendMessage/messagecount", async (req, res) => {
   const messageCount = await SentMessage.find().countDocuments();
-  console.log("message count ", messageCount);
+
   // res.send(status);
   res.send({ messageCount });
 });
