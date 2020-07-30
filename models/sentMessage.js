@@ -12,11 +12,6 @@ const sentmessageSchema = new mongoose.Schema({
     ref: "Client",
     required: true,
   },
-  // driverId: {
-  //   type: Schema.Types.ObjectId,
-  //   ref: "Drivers",
-  //   required: true,
-  // },
 });
 
 const SentMessage = mongoose.model("SentMessages", sentmessageSchema);
