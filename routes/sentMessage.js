@@ -9,12 +9,13 @@ const { Client } = require("../models/endClient");
 app.get("/sendMessage", async (req, res) => {
   const sentmessage = await SentMessage.find()
     .populate(`messageId`, "message -_id")
-    .populate(`endClientId`);
+    .populate(`endClientId`)
+    .limit(10);
 
   res.send(sentmessage);
 });
 
-app.get("/messageCount", async (req, res) => {
+app.get("/sendMessage/messagecount", async (req, res) => {
   const messageCount = await SentMessage.find().countDocuments();
   console.log("message count ", messageCount);
   // res.send(status);

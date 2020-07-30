@@ -45,4 +45,10 @@ app.get("/clients", async (req, res) => {
   res.send(client);
 });
 
+app.get("/clients/count", async (req, res) => {
+  const mobileNumberCount = await Client.find().count();
+
+  res.send({ mobileNumberCount });
+});
+
 module.exports = app;
