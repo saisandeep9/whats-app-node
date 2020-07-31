@@ -10,7 +10,6 @@ const { User } = require("../models/user");
 app.post("/auth", async (req, res) => {
   // const { error } = validate(req.body);
   // if (error) return res.status(400).send(error.details[0].message);
-  console.log("auth", req.body);
 
   let user = await User.findOne({ emailId: req.body.emailId });
   if (!user) return res.status(400).send("Invalid email or password");

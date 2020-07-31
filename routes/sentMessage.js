@@ -45,7 +45,7 @@ app.post("/sendMessage/:id", async (req, res, next) => {
 });
 
 app.delete("/sendMessage/:id", async (req, res) => {
-  console.log("send message", req.params.id);
+  // console.log("send message", req.params.id);
 
   const message = await SentMessage.findByIdAndRemove(req.params.id);
 

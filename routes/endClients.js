@@ -13,10 +13,10 @@ app.post(
   upload.single(`file`),
 
   async (req, res) => {
-    console.log(req.body.file);
+    // console.log(req.body.file);
     const file = req.body.file;
 
-    console.log("file name", __basedir + "/uploads/" + req.file.filename);
+    // console.log("file name", __basedir + "/uploads/" + req.file.filename);
 
     const data = ImportExceltoMDB(req.file.path);
 
