@@ -18,7 +18,11 @@ app.get("/users", async (req, res) => {
 
 app.post("/users", async (req, res) => {
   const user = new User({
+<<<<<<< HEAD
     firstName: req.body.firstName,
+=======
+    firstName: req.body.fristName,
+>>>>>>> origin
     lastName: req.body.lastName,
     emailId: req.body.emailId,
     mobileNumber: req.body.mobileNumber,
