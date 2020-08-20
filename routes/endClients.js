@@ -21,7 +21,15 @@ app.post(
     const data = ImportExceltoMDB(req.file.path);
 
     data.map(async (d) => {
-      const db = new Client({ mobileNumber: parseInt(`91${d.mobileNumber}`) });
+      console.log("data", d);
+      let mobileNumber = Client.findOne({
+        mobileNumber: parseInt(`91${d.mobileNumber}`),
+      });
+      let db;
+      if (mobileNumber) res.status(400).send("number already ");
+      db = new Client({ mobileNumber: parseInt(`91${d.mobileNumber}`) });
+      // const db = new Client({ mobileNumber: parseInt(`91${d.mobileNumber}`) });
+      // const db = new Client({ mobileNumber: d.mobileNumber });
 
       await db.save();
     });

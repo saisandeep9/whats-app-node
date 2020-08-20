@@ -7,7 +7,7 @@ function ImportExceltoMDB(filePath, req, res, next) {
   // __basedir + "/uploads/" + req.file.filename;
   // -> Read Excel File to Json Data
 
-  console.log("im fun", __basedir);
+  console.log("img fun", __basedir);
   console.log("filepath", filePath);
 
   const exlData = excelToJson({

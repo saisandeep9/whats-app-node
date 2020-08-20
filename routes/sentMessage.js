@@ -7,11 +7,15 @@ const { Message } = require("../models/message");
 const { Client } = require("../models/endClient");
 
 app.get("/sendMessage", async (req, res) => {
+  // console.log("this send message");
   const sentmessage = await SentMessage.find()
     .populate(`messageId`, "message -_id")
     .populate(`endClientId`)
     .limit(10);
 
+  let io = req.app.get("socketio");
+
+  io.emit("ts", sentmessage);
   res.send(sentmessage);
 });
 
