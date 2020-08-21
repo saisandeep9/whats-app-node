@@ -46,7 +46,8 @@ userSchema.methods.generateAuthToken = function () {
       isAdmin: this.isAdmin,
       burnedMessages: this.burnedMessages,
     },
-    config.get("jwtPrivateKey")
+    config.get("jwtPrivateKey"),
+    { expiresIn: 1440 }
   );
   return token;
 };
