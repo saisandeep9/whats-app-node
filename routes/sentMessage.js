@@ -1,12 +1,13 @@
 const express = require("express");
 const app = express();
+const auth = require("../middleware/auth");
 
 const { SentMessage } = require("../models/sentMessage");
 
 const { Message } = require("../models/message");
 const { Client } = require("../models/endClient");
 
-app.get("/sendMessage", async (req, res) => {
+app.get("/sendMessage", auth, async (req, res) => {
   // console.log("this send message");
   const sentmessage = await SentMessage.find()
     .populate(`messageId`, "message -_id")
