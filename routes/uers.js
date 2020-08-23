@@ -6,8 +6,10 @@ const bcrypt = require("bcrypt");
 const config = require("config");
 
 const { User } = require("../models/user");
+const mongoose = require("mongoose");
 
 app.get("/users", async (req, res) => {
+  // throw new Error("could not get the users")
   const users = await User.find();
   // const count = await Driver.find().count();
 
@@ -33,7 +35,11 @@ app.post("/users", async (req, res) => {
 });
 
 app.put("/users/:id", async (req, res) => {
+  if (!mongoose.Types.ObjectId.isValid(req.params.id))
+    return res.status(400).send("Invalid user id");
   user = await User.findById(req.params.id);
+
+  if (!user) return res.send("No User with this ID");
 
   let count = user.burnedMessages;
 

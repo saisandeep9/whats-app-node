@@ -7,6 +7,25 @@ const helmet = require("helmet");
 var http = require("http").createServer(app);
 // var io = require("socket.io")();
 const io = require("socket.io")(http);
+const winston = require("winston");
+
+// winston.add(winston.transports.File, { filename: "logfile.log" });
+
+// process.on("uncaughtException", (ex) => {
+//   // console.log("we got an uncaught exception");
+
+//   winston.error(ex.message);
+//   // process.exit(1);
+// });
+// winston.exceptions.handleExceptions(
+//   new winston.transports.File({ filename: "uncaughtExceptions.log" })
+// );
+
+process.on("unhandledRejection", (ex) => {
+  throw ex;
+  // winston.error(ex.message);
+  // process.exit(1);
+});
 
 const corsOptions = {
   exposedHeaders: "x-auth-token",
@@ -22,9 +41,14 @@ const clients = require("./routes/endClients");
 const message = require("./routes/messages");
 const states = require("./routes/states");
 const auth = require("./routes/auth");
+require("./startup/validation")();
 
 const sentMessage = require("./routes/sentMessage");
 const error = require("./middleware/error");
+// throw new Error("something from index");
+// const p = Promise.reject(new Error("something from index"));
+
+// const winston = require("winston/lib/winston/config");
 // const test = require("./routes/test");
 
 mongoose

@@ -21,6 +21,9 @@ app.get("/message", async (req, res) => {
 });
 
 app.delete("/message/:id", async (req, res) => {
+  if (!mongoose.Types.ObjectId.isValid(req.params.id))
+    return res.status(400).send("Invalid user id");
+
   const message = await Message.findByIdAndRemove(req.params.id);
   if (!message) return res.status(404).send("The message was not found.");
 

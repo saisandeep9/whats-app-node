@@ -28,11 +28,14 @@ app.get("/sendMessage/messagecount", async (req, res) => {
 });
 
 app.post("/sendMessage/:id", async (req, res, next) => {
-  const mobileNumbers = await Client.find();
+  if (!mongoose.Types.ObjectId.isValid(req.params.id))
+    return res.status(400).send("Invalid user id");
 
   const message = await Message.findById(req.params.id);
   if (!message)
     return res.status(404).send("The message with the given ID was not found.");
+
+  const mobileNumbers = await Client.find();
 
   let count = message.messageImport;
   mobileNumbers.map(async (mobilenumber) => {
@@ -50,6 +53,8 @@ app.post("/sendMessage/:id", async (req, res, next) => {
 });
 
 app.delete("/sendMessage/:id", async (req, res) => {
+  if (!mongoose.Types.ObjectId.isValid(req.params.id))
+    return res.status(400).send("Invalid user id");
   // console.log("send message", req.params.id);
 
   const message = await SentMessage.findByIdAndRemove(req.params.id);
