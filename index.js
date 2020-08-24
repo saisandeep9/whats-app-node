@@ -21,11 +21,11 @@ const winston = require("winston");
 //   new winston.transports.File({ filename: "uncaughtExceptions.log" })
 // );
 
-process.on("unhandledRejection", (ex) => {
-  throw ex;
-  // winston.error(ex.message);
-  // process.exit(1);
-});
+// process.on("unhandledRejection", (ex) => {
+//   throw ex;
+//   // winston.error(ex.message);
+//   // process.exit(1);
+// });
 
 const corsOptions = {
   exposedHeaders: "x-auth-token",
